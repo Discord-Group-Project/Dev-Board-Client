@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./styles/global.css";
+import "remixicon/fonts/remixicon.css";
 
 import { ReactQueryProvider } from "./providers";
 import { AuthLayout, DashboardLayout, MainLayout } from "./layouts";
