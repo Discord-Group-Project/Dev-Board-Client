@@ -1,11 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./styles/global.css";
+
 import { ReactQueryProvider } from "./providers";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AuthLayout, DashboardLayout, MainLayout } from "./layouts";
 import { HomePage } from "./pages";
+
+import { SignUpComp, SignInComp } from "./components/auth";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +29,16 @@ const router = createBrowserRouter([
   {
     path: "/auth",
     element: <AuthLayout />,
-    children: [],
+    children: [
+      {
+        path: "signup",
+        element: <SignUpComp />,
+      },
+      {
+        path: "signin",
+        element: <SignInComp />,
+      },
+    ],
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")!).render(
