@@ -22,3 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+Dev-Board-Server
+/Dev-Board-Server

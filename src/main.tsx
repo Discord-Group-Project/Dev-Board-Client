@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 import "./styles/global.css";
 import "remixicon/fonts/remixicon.css";
@@ -46,6 +47,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ReactQueryProvider>
       <RouterProvider router={router}></RouterProvider>
+      <Toaster position="top-right" reverseOrder={false} />
     </ReactQueryProvider>
   </React.StrictMode>
 );
