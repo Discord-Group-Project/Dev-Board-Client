@@ -1,45 +1,63 @@
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../../store";
-import { motion as m, AnimatePresence } from "framer-motion";
+import { ThemeToggle } from "../common";
+import { useSignOutMutation } from "../../hooks/mutations";
 
 export function Navbar() {
   const auth = useAuthStore((state) => state.auth);
-  console.log(auth);
+  const { mutate } = useSignOutMutation();
 
   return (
-    <AnimatePresence>
-      <header className=" flex justify-between items-center p-4 bg-primary">
-        <m.div
-          initial={{ x: -200, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          exit={{ x: 0, opacity: 0 }}
-          transition={{ delay: 0.8 }}
-          className="text-2xl font-medium"
-        >
-          <span className="text-white"> Dev</span>
-          <span className="text-secondary"> Board</span>
-        </m.div>
-        <m.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="flex items-center gap-10"
-        >
-          <m.div
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            whileHover={{ scale: 1.1 }}
-          >
-            <Link
-              to="/auth/signin"
-              className="bg-secondary rounded-lg px-4 py-1 font-medium text-white"
+    <div className="navbar bg-primary">
+      <div className="flex-1 text-2xl font-semibold">
+        <span className="text-white">Dev</span>
+        <span className="text-secondary">Board</span>
+      </div>
+      <div className="flex-none gap-2">
+        <ThemeToggle />
+        {auth.isAuth ? (
+          <div className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
             >
-              Sign In
-              <i className="ri-login-circle-line mx-1"></i>
-            </Link>
-          </m.div>
-        </m.div>
-      </header>
-    </AnimatePresence>
+              <div className="w-10 rounded-full">
+                <img
+                  alt="Tailwind CSS Navbar component"
+                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                />
+              </div>
+            </div>
+            <ul
+              tabIndex={0}
+              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <Link to="/dashboard" className="justify-between">
+                  Dashboard
+                </Link>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    mutate();
+                  }}
+                >
+                  Logout
+                </button>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <Link
+            to="/auth/signin"
+            className="btn btn-active btn-secondary btn-sm"
+          >
+            Sign In
+          </Link>
+        )}
+      </div>
+    </div>
   );
 }

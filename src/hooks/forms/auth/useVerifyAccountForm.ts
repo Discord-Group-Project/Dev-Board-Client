@@ -4,7 +4,7 @@ import * as z from "zod";
 
 const schema = z.object({
   otp: z
-    .number({ required_error: "otp required" })
+    .string({ required_error: "otp required" })
     .min(4, { message: "otp most be 4 characters" }),
 });
 

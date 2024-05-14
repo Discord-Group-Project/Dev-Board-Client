@@ -10,7 +10,7 @@ import { ReactQueryProvider } from "./providers";
 import { AuthLayout, DashboardLayout, MainLayout } from "./layouts";
 import { HomePage } from "./pages";
 
-import { SignUpComp, SignInComp } from "./components/auth";
+import { SignUpComp, SignInComp, VerifyAccountComp } from "./components/auth";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +37,10 @@ const router = createBrowserRouter([
         element: <SignUpComp />,
       },
       {
+        path: "verify-account",
+        element: <VerifyAccountComp />,
+      },
+      {
         path: "signin",
         element: <SignInComp />,
       },
@@ -47,7 +51,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ReactQueryProvider>
       <RouterProvider router={router}></RouterProvider>
-      <Toaster position="top-right" reverseOrder={false} />
+      <Toaster reverseOrder={false} />
     </ReactQueryProvider>
   </React.StrictMode>
 );
