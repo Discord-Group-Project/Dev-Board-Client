@@ -1,32 +1,58 @@
 import { create } from "zustand";
-import Cookie from "js-cookie";
-import { devtools } from "zustand/middleware";
+import { devtools, persist } from "zustand/middleware";
 
+interface User {
+  fullname: string;
+  LoginType: string;
+  username: string;
+  avatar: {
+    url: string;
+    public_id: string;
+  };
+  role: string;
+  email: string;
+  isEmailVerified: boolean;
+  refreshToken: string;
+}
 interface AuthState {
   auth: {
     isAuth: boolean;
-    user?: object;
+    user: User;
   };
-  signIn: (user: object) => void;
+  signIn: (user: User) => void;
+  signOut: () => void;
 }
 
 // eslint-disable-next-line prefer-const
 let initialState = {
   isAuth: false,
-  user: {},
+  user: {
+    fullname: "",
+    username: "",
+    avatar: {
+      url: "",
+      public_id: "",
+    },
+    role: "",
+    email: "",
+    isEmailVerified: false,
+    refreshToken: "",
+    LoginType: "",
+  },
 };
 
-const userInfo = Cookie.get("user_info");
-
-if (userInfo) {
-  const data = JSON.parse(userInfo);
-  initialState.isAuth = data.isAuth;
-  initialState.user = data.user;
-}
-
 export const useAuthStore = create<AuthState>()(
-  devtools((set) => ({
-    auth: initialState,
-    signIn: () => set(() => ({})),
-  }))
+  devtools(
+    persist(
+      (set) => ({
+        auth: initialState,
+        signIn: (user) => set(() => ({ auth: { isAuth: true, user: user } })),
+        signOut: () => set(() => ({ auth: initialState })),
+      }),
+      {
+        name: "auth",
+        getStorage: () => sessionStorage,
+      }
+    )
+  )
 );
