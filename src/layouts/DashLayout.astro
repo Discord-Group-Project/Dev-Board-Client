@@ -1,0 +1,13 @@
+---
+import RootLayout from "./RootLayout.astro";
+import { DashWrapper } from "@components/react";
+const { title } = Astro.props;
+---
+
+<RootLayout title=`Dasboard | ${title}`>
+  <DashWrapper client:only="react">
+    <main>
+      <slot />
+    </main>
+  </DashWrapper>
+</RootLayout>
