@@ -1,0 +1,8 @@
+---
+import AuthLayout from "@layouts/AuthLayout.astro";
+import { SignUpComp } from "@components/react/index";
+---
+
+<AuthLayout>
+  <SignUpComp client:only="react" />
+</AuthLayout>

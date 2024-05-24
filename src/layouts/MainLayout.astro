@@ -1,0 +1,12 @@
+---
+import RootLayout from "./RootLayout.astro";
+import Navbar from "@components/astro/Navbar.astro";
+const { title } = Astro.props;
+---
+
+<RootLayout title={title}>
+  <Navbar />
+  <main>
+    <slot />
+  </main>
+</RootLayout>

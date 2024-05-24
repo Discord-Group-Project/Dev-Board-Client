@@ -1,0 +1,13 @@
+---
+import RootLayout from "./RootLayout.astro";
+import { AuthWrapper } from "@components/react/index";
+const { title } = Astro.props;
+---
+
+<RootLayout title=`Auth | ${title}`>
+  <AuthWrapper client:only="react">
+    <main>
+      <slot />
+    </main>
+  </AuthWrapper>
+</RootLayout>

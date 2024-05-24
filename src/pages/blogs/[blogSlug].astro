@@ -1,0 +1,10 @@
+---
+export const prerender = false;
+import MainLayout from "@layouts/MainLayout.astro";
+import { BlogPosts } from "@components/react";
+const { blogSlug } = Astro.params;
+---
+
+<MainLayout title="hello">
+  <BlogPosts id={blogSlug as string} client:only="react" />
+</MainLayout>
