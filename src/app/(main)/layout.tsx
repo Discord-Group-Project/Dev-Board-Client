@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Navbar } from "@/components";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -9,5 +10,10 @@ export default function MainLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <main>{children}</main>;
+  return (
+    <>
+      <Navbar />
+      <main>{children}</main>
+    </>
+  );
 }

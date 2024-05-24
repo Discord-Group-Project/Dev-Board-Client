@@ -1,7 +1,9 @@
+import { SignInComp } from "@/components";
+
 export default function SignIn() {
   return (
     <div>
-      <h1>Hello</h1>
+      <SignInComp />
     </div>
   );
 }
