@@ -1,0 +1,34 @@
+import React from "react";
+import Link from "next/link";
+import ThemeSwitch from "../THemeSwitch";
+import NavUtils from "../NavUtils";
+
+export function Navbar() {
+  return (
+    <div className="navbar bg-[#dab5d6] px-8">
+      <Link
+        href="/"
+        className="flex-1 text-2xl font-semibold navbar-start ltim"
+      >
+        <span className="text-black mx-1">Dev</span>
+        <span className="text-primary">Board</span>
+      </Link>
+
+      <nav className="navbar-center inter text-black font-medium">
+        <div className="hidden lg:flex gap-8 pl-8">
+          <Link href="/">Home</Link>
+          <Link href="/blogs">Blogs</Link>
+          <Link href="/questions">Questions </Link>
+          <Link href="/services">Services</Link>
+        </div>
+      </nav>
+
+      <div className="navbar-end">
+        <div className="flex gap-2 items-center">
+          <ThemeSwitch />
+          <NavUtils />
+        </div>
+      </div>
+    </div>
+  );
+}
