@@ -9,7 +9,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <head>
+        <link rel="icon" href="favicon.ico" sizes="any" />
+      </head>
+      <body className="bg-gray-950 min-h-screen inter">
         <ThemeProvider>
           <ReactQueryProvider>{children}</ReactQueryProvider>
         </ThemeProvider>

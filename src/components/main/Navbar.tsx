@@ -5,16 +5,16 @@ import NavUtils from "../NavUtils";
 
 export function Navbar() {
   return (
-    <div className="navbar bg-[#dab5d6] px-8">
+    <div className="navbar bg-[#323233]  px-8">
       <Link
         href="/"
         className="flex-1 text-2xl font-semibold navbar-start ltim"
       >
-        <span className="text-black mx-1">Dev</span>
-        <span className="text-primary">Board</span>
+        <span className="text-white mx-1">Dev</span>
+        <span className="text-[#C61B1C]">Board</span>
       </Link>
 
-      <nav className="navbar-center inter text-black font-medium">
+      <nav className="navbar-center inter text-white font-medium">
         <div className="hidden lg:flex gap-8 pl-8">
           <Link href="/">Home</Link>
           <Link href="/blogs">Blogs</Link>
@@ -25,7 +25,6 @@ export function Navbar() {
 
       <div className="navbar-end">
         <div className="flex gap-2 items-center">
-          <ThemeSwitch />
           <NavUtils />
         </div>
       </div>
