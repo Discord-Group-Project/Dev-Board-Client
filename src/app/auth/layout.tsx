@@ -12,7 +12,7 @@ export default function AuthLayout({
 }>) {
   return (
     <AuthWrapper>
-      <main>{children}</main>;
+      <main>{children}</main>
     </AuthWrapper>
   );
 }
