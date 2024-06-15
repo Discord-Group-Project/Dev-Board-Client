@@ -11,7 +11,11 @@ const config: Config = {
     daisyui: {
       themes: ["light", "dark"],
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'hero-pattern': "url('/Public/abstract-6047465_1920.jpg')",
+      }
+    },
   },
   plugins: [daisyui],
 };
