@@ -1,6 +1,9 @@
 // main
 export * from "./main/Navbar";
 
+//footer
+export * from "./main/Footer";
+
 //auth
 export * from "./auth/signIn";
 
@@ -9,5 +12,7 @@ export * from "./Button/button";
 
 
 // tranding post
+export * from "./main/TrandingPost";
 
-export * from "./TrandingPost/TrandingPost";
+// top questions
+export * from "./main/TopQuestions";
