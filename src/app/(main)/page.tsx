@@ -21,12 +21,12 @@ export default function Home() {
         <div >
           <div className="w-full h-full flex flex-col items-center justify-start">
             <h1
-              className={`text-6xl font-bold mt-32 text-white ${PoppinsFont.className}`}
+              className={`text-6xl max-md:text-4xl max-lg:text-4xl max-lg:mt-12 font-bold mt-32 text-white w-50vw ${PoppinsFont.className}`}
             >
               We’re WordsFlow. See our <br /> thoughts, stories & ideas.
             </h1>
             <p
-              className={`text-xl mt-16 w-[60%] leading-relaxed text-white ${PoppinsFont.className}`}
+              className={`text-xl  max-md:text-xl max-lg:text-xl max-lg:mt-12 max-md:w-[70vw]   mt-16 w-[60vw] leading-relaxed text-white  px-4${PoppinsFont.className}`}
             >
               Browse our HTML5 responsive Blog templates below. You can easily
               customize any of our Blog website templates with Webflow's
