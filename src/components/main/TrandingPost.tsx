@@ -72,7 +72,7 @@ export function TrandingPost() {
                 {card.map((item) => (
                 <div
                     key={item.id}
-                    className="relative isolate flex flex-col mx-4  gap-4 justify-end overflow-hidden  rounded-lg p-4 mt-4 object-cover h-64 w-96 "
+                    className="relative isolate flex flex-col mx-4  gap-4 justify-end overflow-hidden  rounded-2xl p-4 mt-4 object-cover h-52 w-96 "
                      >
                     <Image
                      src={item.src}
@@ -81,9 +81,13 @@ export function TrandingPost() {
                       height={item.height}
                       className={item.className}
                      />
-                    <div className="absolute inset-0 rounded-lg bg-black/65 w-1/2"></div>
-                        <h3 className="z-10 mt-3 text-3xl font-bold text-white"> Paris  </h3>
-                    <div className="z-10 gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">City of love</div>
+                    <div className="absolute inset-0 rounded-2xl bg-black/65 w-1/2"></div>
+                    <div className="z-10">
+
+                        <h3 className="  text-xs font-bold text-white">january 18, 2024</h3>
+                        <p className="w-1/2 text-2xl my-4">What’s next for the drones in film making</p>
+                    {/* <div className="z-10 gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">City of love</div> */}
+                    </div>
                 </div>
             ))}
           </div>
