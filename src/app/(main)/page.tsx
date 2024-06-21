@@ -2,6 +2,7 @@ import { Button, TopQuestions, TrandingPost } from "@/components";
 import Image from "next/image";
 import { Itim, Poppins } from "next/font/google";
 import { RxDoubleArrowDown } from "react-icons/rx";
+import Link from "next/link";
 
 const itim = Itim({
   subsets: ["latin"],
@@ -18,7 +19,7 @@ export default function Home() {
   return (
     <>
       <div className="w-full h-[calc(100vh-4rem)]  bg-[url('/abstract-6047465_1920.jpg')] bg-cover bg-center bg-no-repeat ">
-        <div >
+        <div>
           <div className="w-full h-full flex flex-col items-center justify-start">
             <h1
               className={`text-6xl max-md:text-4xl max-lg:text-4xl max-lg:mt-12 font-bold mt-32 text-white w-50vw ${PoppinsFont.className}`}
@@ -35,7 +36,9 @@ export default function Home() {
               CMS, and launch it today new Blog website to
             </p>
 
-            <Button className="mt-16">Get Started</Button>
+            <Link href="/blogs">
+              <Button className="mt-16">Get Started</Button>
+            </Link>
 
             <button className="mt-16 animate-bounce text-3xl">
               {" "}
