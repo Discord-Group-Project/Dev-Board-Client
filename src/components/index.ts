@@ -4,12 +4,8 @@ export * from "./main/Navbar";
 //footer
 export * from "./main/Footer";
 
-//auth
-export * from "./auth/signIn";
-
 //Button
 export * from "./Button/button";
-
 
 // tranding post
 export * from "./main/TrandingPost";

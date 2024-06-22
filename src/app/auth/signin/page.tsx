@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { type SignInFormSchemaType, useSignInForm } from "@/hooks/form/signIn";
+import { type SignInFormSchemaType, useSignInForm } from "@/hooks/form";
 import { Api } from "@/lib";
 import { useAuthStore } from "@/store";
 import toast from "react-hot-toast";
