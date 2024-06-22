@@ -5,7 +5,7 @@ import * as z from "zod";
 const schema = z.object({
   otp: z
     .string({ required_error: "OTP required" })
-    .min(6, { message: "OTP most be 6 characters" }),
+    .min(4, { message: "OTP most be 4 characters" }),
 });
 
 export type VerifyEmailFormSchemaType = z.infer<typeof schema>;

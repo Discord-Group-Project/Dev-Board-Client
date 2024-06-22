@@ -1,11 +1,44 @@
 "use client";
 import Link from "next/link";
+import {
+  ForgetPasswordFormSchemaType,
+  useForgetPasswordForm,
+} from "@/hooks/form";
+import { Api } from "@/lib";
+import toast from "react-hot-toast";
+import { useMutation } from "@tanstack/react-query";
 
 function Page() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForgetPasswordForm();
+
+  const { mutate, isPending } = useMutation({
+    mutationKey: ["forgetPassword"],
+    mutationFn: (data: ForgetPasswordFormSchemaType) =>
+      Api.post("/users/forgot-password", data).then((res) => res.data),
+    onSuccess: (data: any) => {
+      toast.success(data.message);
+      window.location.replace("/auth/password/reset");
+    },
+    onError: (error: any) => {
+      toast.error(error?.response?.data?.message || error?.message);
+    },
+  });
+
+  const handleForgetPassword = async (data: ForgetPasswordFormSchemaType) => {
+    mutate(data);
+  };
+
   return (
     <>
       <section className="flex justify-center items-center h-screen mx-2">
-        <form className="flex gap-8 flex-col bg-gray-800 rounded-lg p-3 w-full md:w-1/2 lg:w-1/3 m-1">
+        <form
+          className="flex gap-8 flex-col bg-gray-800 rounded-lg p-3 w-full md:w-1/2 lg:w-1/3 m-1"
+          onSubmit={handleSubmit(handleForgetPassword)}
+        >
           <h1 className="text-center font-semibold text-xl">Forget Password</h1>
 
           <div>
@@ -18,15 +51,23 @@ function Page() {
               >
                 <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
               </svg>
-              <input type="text" className="grow" placeholder="email" />
+              <input
+                type="text"
+                className="grow"
+                placeholder="email"
+                {...register("email")}
+              />
             </label>
-
-            <p className="text-red-500 font-medium"></p>
+            {errors?.email && (
+              <p className="text-red-500 font-medium">
+                {errors?.email?.message}
+              </p>
+            )}
           </div>
 
           <div>
             <button type="submit" className="btn btn-sm btn-primary w-full">
-              Forget Password
+              {isPending ? "Loading..." : "Forget Password"}
             </button>
           </div>
 

@@ -27,7 +27,9 @@ function Page() {
     },
   });
 
-  const onSubmit = (data: VerificationEmailFormSchemaType) => {
+  const handleEmailVerification = async (
+    data: VerificationEmailFormSchemaType
+  ) => {
     mutate(data);
   };
 
@@ -36,7 +38,7 @@ function Page() {
       <section className="flex justify-center items-center h-screen mx-2">
         <form
           className="flex gap-8 flex-col bg-gray-800 rounded-lg p-3 w-full md:w-1/2 lg:w-1/3 m-1"
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit(handleEmailVerification)}
         >
           <h1 className="text-center font-semibold text-xl">
             Send Verification Email
