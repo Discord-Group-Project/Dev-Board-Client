@@ -30,8 +30,8 @@ function SignIn() {
     mutationFn: (data: any) =>
       Api.post("/users/signin", data).then((res) => res.data),
     onSuccess: (data: any) => {
-      toast.success(data.message);
-      storeSignIn(data.data);
+      toast.success(data?.message);
+      storeSignIn(data?.data);
       window.location.replace("/dashboard");
     },
     onError: (error: any) => {
