@@ -12,7 +12,7 @@ export default function DashLayout({
 }>) {
   return (
     <DashWrapper>
-      <main>{children}</main>;
+      <main>{children}</main>
     </DashWrapper>
   );
 }
