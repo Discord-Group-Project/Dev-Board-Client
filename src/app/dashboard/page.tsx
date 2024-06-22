@@ -3,15 +3,16 @@ import { useQuery } from "@tanstack/react-query";
 import { Api } from "@/lib";
 
 export default function Dashboard() {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["current-users"],
+  const { data, isLoading } = useQuery({
+    queryKey: ["current-user"],
     queryFn: () => Api.get("users/current-user").then((res) => res?.data?.data),
     refetchOnWindowFocus: false,
+    refetchOnMount: false,
+    refetchInterval: false,
     staleTime: Infinity,
   });
 
   if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error</div>;
 
   return (
     <div>

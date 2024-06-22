@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Api } from "@/lib";
 import toast from "react-hot-toast";
 import { useMutation } from "@tanstack/react-query";
+import Avatar from "react-avatar";
 
 function NavUtils() {
   const [mounted, setMounted] = useState(false);
@@ -41,11 +42,11 @@ function NavUtils() {
             className="btn btn-ghost btn-circle avatar"
           >
             <div className="w-10 rounded-full">
-              <Image
-                alt="Tailwind CSS Navbar component"
-                src={auth.user.avatar.url}
-                width={24}
-                height={24}
+              <Avatar
+                name={auth?.user?.fullname}
+                src={auth?.user?.avatar?.url}
+                size="40"
+                round
               />
             </div>
           </div>
