@@ -22,7 +22,7 @@ export default function Home() {
         <div>
           <div className="w-full h-full flex flex-col items-center justify-start">
             <h1
-              className={`text-6xl max-md:text-4xl max-lg:text-4xl max-lg:mt-12 font-bold mt-32 text-white w-50vw ${PoppinsFont.className}`}
+              className={`text-6xl max-md:text-4xl max-lg:text-4xl max-lg:mt-12 font-bold mt-32 text-white w-50vw `}
             >
               We’re WordsFlow. See our <br /> thoughts, stories & ideas.
             </h1>
