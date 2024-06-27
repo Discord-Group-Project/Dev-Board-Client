@@ -1,3 +1,4 @@
+import Sidebar from "@/components/dashboard/Sidebar";
 import { DashWrapper } from "@/lib";
 import type { Metadata } from "next";
 
@@ -12,6 +13,7 @@ export default function DashLayout({
 }>) {
   return (
     <DashWrapper>
+      <Sidebar />
       <main>{children}</main>;
     </DashWrapper>
   );

@@ -16,3 +16,8 @@ export * from "./main/TrandingPost";
 
 // top questions
 export * from "./main/TopQuestions";
+
+
+// dashboard
+export * from "./dashboard/Sidebar";
+export * from "./dashboard/Badges";

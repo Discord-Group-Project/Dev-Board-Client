@@ -130,10 +130,12 @@ export default function Questions() {
           </h1>
 
           <p className="text-center text-white max-w-3xl mt-4 font-bold ">
-            We want to connect the people who have knowledge to the people who
-            need it, to bring together people with different perspectives so
-            they can understand each other better, and to empower everyone to
-            share their knowledge.
+            Our mission is to connect developers and enthusiasts with the
+            knowledge they seek, enabling a dynamic exchange of coding expertise
+            and diverse perspectives. By fostering a collaborative environment,
+            we aim to enhance understanding and empower everyone to share their
+            programming knowledge, driving innovation and growth in the tech
+            community.
           </p>
         </div>
       </header>
@@ -164,7 +166,7 @@ export default function Questions() {
             {questions.map((data) => (
               <div
                 key={data.id}
-                className="flex flex-row items-center justify-center border-2 mb-4 ml-8 w-[75vw]  bg-[#847F7F] px-4 rounded-lg "
+                className="flex flex-row items-center justify-center border-2 mb-4 ml-8 w-[75vw]  bg-[#847f7f21] px-4 rounded-lg "
               >
                 <div className="flex flex-row   items-start justify-center">
                   <Image
