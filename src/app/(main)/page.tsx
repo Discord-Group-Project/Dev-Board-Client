@@ -1,54 +1,105 @@
-import { Button, TopQuestions, TrandingPost } from "@/components";
+import { Button } from "@/components";
 import Image from "next/image";
-import { Itim, Poppins } from "next/font/google";
-import { RxDoubleArrowDown } from "react-icons/rx";
 import Link from "next/link";
 
-const itim = Itim({
-  subsets: ["latin"],
-  weight: ["400"],
-  display: "swap",
-});
-const PoppinsFont = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "700", "900"],
-  display: "swap",
-});
+async function getBlogs() {
+  const res = await fetch("http://localhost:5000/api/v1/blogs/getAllBlog", {
+    cache: "no-store",
+  });
+  const data = await res?.json();
+  return data;
+}
 
-export default function Home() {
+async function getQuestions() {
+  const res = await fetch(
+    "http://localhost:5000/api/v1/Questions/getAllQuestions",
+    {
+      cache: "no-store",
+    }
+  );
+  const data = await res?.json();
+  return data;
+}
+
+export default async function Home() {
+  const { data: blogs } = await getBlogs();
+  const { data: questions } = await getQuestions();
+
   return (
     <>
-      <div className="w-full h-[calc(100vh-4rem)]  bg-[url('/abstract-6047465_1920.jpg')] bg-cover bg-center bg-no-repeat ">
-        <div>
-          <div className="w-full h-full flex flex-col items-center justify-start">
-            <h1
-              className={`text-6xl max-md:text-4xl max-lg:text-4xl max-lg:mt-12 font-bold mt-32 text-white w-50vw `}
-            >
-              We’re WordsFlow. See our <br /> thoughts, stories & ideas.
-            </h1>
-            <p
-              className={`text-xl  max-md:text-xl max-lg:text-xl max-lg:mt-12 max-md:w-[70vw]   mt-16 w-[60vw] leading-relaxed text-white  px-4${PoppinsFont.className}`}
-            >
-              Browse our HTML5 responsive Blog templates below. You can easily
-              customize any of our Blog website templates with Webflow's
-              code-free design tools, then connect your new Blog website to our
-              powerful CMS, and launch it today new Blog website to our powerful
-              CMS, and launch it today new Blog website to
-            </p>
+      <section className="text-center my-20 container mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 className="text-3xl font-bold ltim">
+          We’re WordsFlow. See our thoughts, stories & ideas.
+        </h1>
+        <p className="text-xl inter mt-10">
+          We’re WordsFlow. See our thoughts, stories & ideas. We are a community
+          of developers who share their knowledge.
+        </p>
+        <Link href="/blogs">
+          <Button className="mt-16">Get Started</Button>
+        </Link>
+      </section>
 
-            <Link href="/blogs">
-              <Button className="mt-16">Get Started</Button>
+      <section className="bg-gray-900 py-10 mt-10">
+        <h1 className="text-3xl font-bold text-white text-center">
+          Trending Posts
+        </h1>
+        <div className="flex flex-row justify-center gap-4 flex-wrap  items-center mt-16 mx-5">
+          {blogs?.map((item: any) => (
+            <Link
+              key={item?._id}
+              href={`blogs/${item._id}`}
+              className="relative isolate flex flex-col mx-4  gap-4 justify-end overflow-hidden  rounded-2xl p-4 mt-4 object-cover h-52 w-96 "
+            >
+              <Image
+                src={item?.image?.url}
+                alt="avatar"
+                width={100}
+                height={100}
+                className="rounded-lg absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 rounded-2xl bg-black/35 p-5">
+                <h3 className="text-xs font-bold text-white">
+                  {item?.createdAt?.substring(0, 10)}
+                </h3>
+                <p className="text-2xl my-4">{item?.title}</p>
+              </div>
             </Link>
-
-            <button className="mt-16 animate-bounce text-3xl">
-              {" "}
-              <RxDoubleArrowDown />
-            </button>
-          </div>
+          ))}
         </div>
-      </div>
-      <TrandingPost />
-      <TopQuestions />
+      </section>
+
+      <section className="py-10 mt-10">
+        <h1 className="text-3xl font-bold text-white text-center">
+          Top Questions
+        </h1>
+
+        <div className="flex flex-row justify-center gap-4 flex-wrap  items-center mt-16 mx-5">
+          {questions?.map((item: any) => (
+            <Link
+              href="#"
+              key={item?._id}
+              className="flex items-center flex-wrap  gap-4 bg-blue-700 p-8 rounded-lg max-w-md"
+            >
+              <Image
+                src={item?.owner[0]?.avatar?.url}
+                alt="avatar"
+                width={100}
+                height={100}
+                className="rounded-full w-16 h-16"
+              />
+              <div className="flex flex-col">
+                <h2 className="text-white text-3xl font-bold">
+                  {item?.owner[0]?.username}
+                </h2>
+                <p className="text-white text-sm mt-1"> Asks</p>
+              </div>
+
+              <div>{item?.question}</div>
+            </Link>
+          ))}
+        </div>
+      </section>
     </>
   );
 }

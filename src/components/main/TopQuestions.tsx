@@ -5,7 +5,7 @@ import React, { use } from "react";
 const Questions = [
   {
     id: 1,
-    img: "https://img.freepik.com/free-photo/3d-cartoon-style-character_23-2151034097.jpg?t=st=1718526536~exp=1718530136~hmac=4b0f8febf835db4853f050e1100c5b6966593d1ae6961034a931fd220252078c&w=740",
+    img: "http://res.cloudinary.com/dxpahuuq1/image/upload/v1715869967/devBoard/jvezaxuwzgiocny47ptj.jpg",
     userName: "@eve",
     ask: 105,
     question:
@@ -14,7 +14,7 @@ const Questions = [
   },
   {
     id: 2,
-    img: "https://img.freepik.com/free-photo/portrait-beautiful-young-woman-with-curly-hair-brown-hat_1142-42780.jpg?t=st=1718526664~exp=1718530264~hmac=c4775b4057860c192f7b2262bd90c69bddb461a8bed882dc17762cd8a958d48b&w=740",
+    img: "http://res.cloudinary.com/dxpahuuq1/image/upload/v1715869967/devBoard/jvezaxuwzgiocny47ptj.jpg",
     userName: "@sarah",
     ask: 1050,
     question:
@@ -23,7 +23,7 @@ const Questions = [
   },
   {
     id: 3,
-    img: "https://img.freepik.com/free-photo/androgynous-avatar-non-binary-queer-person_23-2151100226.jpg?t=st=1718527511~exp=1718531111~hmac=7b5a4362463526a89c9017c96b4c728bd03b04444384b73da6e600dc5493facd&w=740",
+    img: "http://res.cloudinary.com/dxpahuuq1/image/upload/v1715869967/devBoard/jvezaxuwzgiocny47ptj.jpg",
     userName: "@johndoe",
     ask: 1032,
     question:
@@ -37,6 +37,7 @@ const itim = Itim({
   weight: ["400"],
   display: "swap",
 });
+
 export function TopQuestions() {
   return (
     <div className="container mx-auto  px-4 sm:px-6 lg:px-8 ">
@@ -62,9 +63,7 @@ export function TopQuestions() {
                     <h2 className="text-white text-3xl font-bold">
                       {item.userName}
                     </h2>
-                    <p className="text-white text-sm mt-1">
-                      {item.ask} Asks
-                    </p>
+                    <p className="text-white text-sm mt-1">{item.ask} Asks</p>
                   </div>
                 </div>
                 <p className="text-white w-96 text-xs  px-16 mt-4">

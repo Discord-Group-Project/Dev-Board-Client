@@ -1,9 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["res.cloudinary.com", "images.unsplash.com","img.freepik.com","flowbite.s3.amazonaws.com"],
-
-
+    remotePatterns: [
+      {
+        hostname: "res.cloudinary.com",
+      },
+      {
+        hostname: "img.freepik.com",
+      },
+    ],
   },
 };
 

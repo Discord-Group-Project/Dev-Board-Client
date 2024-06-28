@@ -13,8 +13,8 @@ export default function MainLayout({
   return (
     <>
       <Navbar />
-      <main>{children}</main>
-      <Footer/>
+      <main className="min-h-screen w-full bg-gray-950">{children}</main>
+      <Footer />
     </>
   );
 }

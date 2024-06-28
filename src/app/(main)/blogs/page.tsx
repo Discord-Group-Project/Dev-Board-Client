@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Api } from "@/lib";
 
 async function getBlogs() {
   const res = await fetch("http://localhost:5000/api/v1/blogs/getAllBlog", {
     cache: "no-store",
   });
-  return res?.json();
+  const data = await res?.json();
+  return data;
 }
 
 export default async function Blogs() {
@@ -14,73 +14,33 @@ export default async function Blogs() {
 
   return (
     <>
-      <header>
-        <div className="grid grid-rows-2 grid-flow-col gap-4 px-4 py-8 sm:px-6 lg:px-8">
-          <div className="row-span-3">
-            <Image
-              src="/mike-uderevsky--fW75WfpAfc-unsplash.jpg"
-              alt="Logo"
-              width={1920}
-              height={1080}
-              className="rounded-lg object-cover h-[63vh] w-[60vw]"
-            />
-          </div>
-          <div className="col-span-2">
-            {" "}
-            <Image
-              src="/jigar-panchal-Cp4dn8_6Y5I-unsplash.jpg"
-              alt="Logo"
-              width={1920}
-              height={1080}
-              className="rounded-lg object-cover h-[30vh] w-[45vw]"
-            />
-          </div>
-          <div className="row-span-2 col-span-2 ">
-            {" "}
-            <Image
-              src="/mike-uderevsky--fW75WfpAfc-unsplash.jpg "
-              alt="Logo"
-              width={1920}
-              height={1080}
-              className="rounded-lg object-cover h-[30vh] w-[45vw]"
-            />
-          </div>
+      <section className="bg-gray-950 py-10 mt-10">
+        <h1 className="text-3xl font-bold text-white text-center">
+          Trending Posts
+        </h1>
+        <div className="flex flex-row justify-center gap-4 flex-wrap  items-center mt-16 mx-5">
+          {blogs?.map((item: any) => (
+            <Link
+              key={item?._id}
+              href={`blogs/${item._id}`}
+              className="relative isolate flex flex-col mx-4  gap-4 justify-end overflow-hidden  rounded-2xl p-4 mt-4 object-cover h-52 w-96 "
+            >
+              <Image
+                src={item?.image?.url}
+                alt="avatar"
+                width={100}
+                height={100}
+                className="rounded-lg absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 rounded-2xl bg-black/35 p-5">
+                <h3 className="text-xs font-bold text-white">
+                  {item?.createdAt?.substring(0, 10)}
+                </h3>
+                <p className="text-2xl my-4">{item?.title}</p>
+              </div>
+            </Link>
+          ))}
         </div>
-      </header>
-
-      <div className="text-sm breadcrumbs px-6  text-gray-500 dark:text-gray-400 sm:px-8">
-        <ul>
-          <li>
-            <Link href="/">Home</Link>
-          </li>
-          <li>
-            <Link href="/blogs">Blog</Link>
-          </li>
-        </ul>
-      </div>
-
-      <section className="flex flex-row flex-wrap w-full items-center justify-center bg-[#030712] rounded-lg shadow-lg p-4">
-        {blogs?.map((item: any) => (
-          <Link
-            href={`blogs/${item.id}`}
-            key={item.id}
-            className="w-[33%]  p-4 relative"
-          >
-            <Image
-              src={item.image.url}
-              alt="Logo"
-              width={1920}
-              height={1080}
-              className="rounded-lg opacity-80 object-cover h-[40vh] w-[60vw]"
-            />
-            <div className="absolute bottom-10 left-5 p-4 text-white text-sm ">
-              <p>{item.date}</p>
-              <h1 className="text-lg  font-bold text-wrap mx-2 ">
-                {item.title}
-              </h1>
-            </div>
-          </Link>
-        ))}
       </section>
     </>
   );
