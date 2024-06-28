@@ -66,7 +66,7 @@ function NavUtils() {
       ) : (
         <Link
           href="/auth/signin"
-          className="btn  btn-primary btn-sm rounded-full text-white px-5"
+          className="btn  bg-blue-600 hover:bg-blue-700 btn-sm rounded-full text-white px-5"
         >
           Sign In
         </Link>

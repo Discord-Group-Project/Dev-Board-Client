@@ -2,9 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 async function getBlogs() {
-  const res = await fetch("http://localhost:5000/api/v1/blogs/getAllBlog", {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/blogs/getAllBlog`,
+    {
+      cache: "no-store",
+    }
+  );
   const data = await res?.json();
   return data;
 }
@@ -15,15 +18,13 @@ export default async function Blogs() {
   return (
     <>
       <section className="bg-gray-950 py-10 mt-10">
-        <h1 className="text-3xl font-bold text-white text-center">
-          Trending Posts
-        </h1>
-        <div className="flex flex-row justify-center gap-4 flex-wrap  items-center mt-16 mx-5">
+        <h1 className="text-3xl font-bold text-white text-center">All Blogs</h1>
+        <div className="flex flex-row justify-center gap-4 flex-wrap  items-center mt-16 mx-5 ">
           {blogs?.map((item: any) => (
             <Link
               key={item?._id}
               href={`blogs/${item._id}`}
-              className="relative isolate flex flex-col mx-4  gap-4 justify-end overflow-hidden  rounded-2xl p-4 mt-4 object-cover h-52 w-96 "
+              className="relative isolate flex flex-col mx-4  gap-4 justify-end overflow-hidden  rounded-2xl p-4 mt-4 object-cover h-52 w-96 shadow-lg hover-animate-wiggle"
             >
               <Image
                 src={item?.image?.url}

@@ -66,64 +66,69 @@ export default function Page({ params }: { params: { slug: string } }) {
   return (
     <>
       {
-        <section>
+        <section className="px-10">
           <div className="flex flex-col items-center justify-center">
             <h1 className="text-6xl font-bold mt-8">{BlogData?.title}</h1>
+
             <div className=" mt-4  flex flex-row justify-center items-center gap-8">
-              <h3 className="text-2xl font-bold">
+              <h3 className="text-2xl font-bold capitalize">
                 {BlogData?.author?.fullname}
               </h3>
               <h3 className="text-2xl font-bold">
                 {BlogData?.createdAt?.slice(0, 10)}
               </h3>
             </div>
-            <div className="mt-8 flex flex-col items-center justify-center">
-              <Image
-                src={BlogData?.image?.url}
-                alt={BlogData?.title}
-                width={1920}
-                height={1080}
-                className="rounded-lg shadow-lg object-cover h-[60vh] w-[90vw]"
-              />
-            </div>
 
-            <article className="mt-8 flex flex-col items-center justify-center">
-              {Data.content}
-            </article>
+            <Image
+              src={BlogData?.image?.url}
+              alt={BlogData?.title}
+              width={1920}
+              height={1080}
+              className="rounded-lg shadow-lg object-cover h-[60vh] w-[90vw] mt-8"
+            />
           </div>
-          <div className="flex flex-row  px-[7rem] items-center mt-8 gap-3">
+
+          <div className="flex flex-row  items-center mt-8 gap-3">
             <h2 className="text-2xl font-bold ">Tags</h2>
             <TfiLayoutLineSolid />
-            {Data.tags?.map((tag: any, index: number) => (
+            {BlogData?.tags?.map((tag: any) => (
               <span
-                key={index}
+                key={tag?._id}
                 className="text-sm border-1 px-4 py-1 bg-[#847F7F] bg-opacity-25 text-white rounded-full font-bold"
               >
-                {tag}
+                {tag?.name}
               </span>
             ))}
           </div>
-          <div className="flex flex-col  px-[7rem]  gap-8">
+
+          <article className="mt-8">{BlogData?.content}</article>
+
+          <div className="flex flex-col gap-8">
             <h2 className="text-3xl font-bold mt-8">
-              {BlogData.comments?.length} Comments
+              {BlogData?.comments?.length} Comments
             </h2>
-            {Data.cmments?.map((cmment: any) => (
-              <div className="flex flex-col items-start" key={cmment.id}>
+            {BlogData?.comments?.map((comments: any) => (
+              <div
+                className="flex flex-col items-start shadow-xl rounded-xl bg-gray-900 p-3"
+                key={comments?._id}
+              >
                 <div className="flex flex-row items-center gap-4 justify-center">
                   <div className="flex flex-row items-center  justify-center">
-                    <Image
+                    {/* <Image
                       src={cmment.avatar}
                       alt={cmment.avatar}
                       width={100}
                       height={100}
                       className="rounded-full shadow-lg object-cover h-[10vh] w-[5vw]"
-                    />
+                    /> */}
                   </div>
                   <div className="flex flex-col  items-start gap-1 justify-center ">
-                    <p className="text-xl font-bold">{cmment.author}</p>
-                    <p className="text-sm">{cmment.date}</p>
+                    {/* <p className="text-xl font-bold">{cmment.author}</p> */}
+                    <p className="text-sm">
+                      {comments?.createdAt?.substring(0, 10)}
+                    </p>
                     <p className="text-sm max-w-[40vw] mt-2 text-gray-900 dark:text-white">
-                      {cmment.content}
+                      {comments?.content}
                     </p>
                   </div>
                 </div>

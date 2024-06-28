@@ -8,6 +8,12 @@ const nextConfig = {
       {
         hostname: "img.freepik.com",
       },
+      {
+        hostname: "flowbite.s3.amazonaws.com",
+      },
+      {
+        hostname: "images.unsplash.com",
+      },
     ],
   },
 };

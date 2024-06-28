@@ -3,16 +3,19 @@ import Image from "next/image";
 import Link from "next/link";
 
 async function getBlogs() {
-  const res = await fetch("http://localhost:5000/api/v1/blogs/getAllBlog", {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/blogs/getAllBlog`,
+    {
+      cache: "no-store",
+    }
+  );
   const data = await res?.json();
   return data;
 }
 
 async function getQuestions() {
   const res = await fetch(
-    "http://localhost:5000/api/v1/Questions/getAllQuestions",
+    `${process.env.NEXT_PUBLIC_API_URL}/Questions/getAllQuestions`,
     {
       cache: "no-store",
     }
@@ -28,10 +31,10 @@ export default async function Home() {
   return (
     <>
       <section className="text-center my-20 container mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold ltim">
+        <h1 className="text-3xl font-bold ltim animate-bounce_two">
           We’re WordsFlow. See our thoughts, stories & ideas.
         </h1>
-        <p className="text-xl inter mt-10">
+        <p className="text-xl inter mt-10 animate-bounce_two">
           We’re WordsFlow. See our thoughts, stories & ideas. We are a community
           of developers who share their knowledge.
         </p>
@@ -42,7 +45,7 @@ export default async function Home() {
 
       <section className="bg-gray-900 py-10 mt-10">
         <h1 className="text-3xl font-bold text-white text-center">
-          Trending Posts
+          Trending Blogs
         </h1>
         <div className="flex flex-row justify-center gap-4 flex-wrap  items-center mt-16 mx-5">
           {blogs?.map((item: any) => (
@@ -82,7 +85,7 @@ export default async function Home() {
               className="flex items-center flex-wrap  gap-4 bg-blue-700 p-8 rounded-lg max-w-md"
             >
               <Image
-                src={item?.owner[0]?.avatar?.url}
+                src={item?.owner?.avatar?.url}
                 alt="avatar"
                 width={100}
                 height={100}
