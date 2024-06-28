@@ -1,15 +1,17 @@
+
 import Image from "next/image";
 import { AiFillLike } from "react-icons/ai";
-import Link from "next/link";
-import { Poppins } from "next/font/google";
 import { BsQuestionSquareFill } from "react-icons/bs";
 import { SiAnswer } from "react-icons/si";
 import { FaBlog } from "react-icons/fa6";
 import { HiCreditCard } from "react-icons/hi2";
 import { AiOutlineEye } from "react-icons/ai";
-import { Badges } from "@/components";
+import { Badges, TopContents } from "@/components";
+
+
 export default function Dashboard() {
-  
+
+
   return (
     <section>
       <div className={`p-4 sm:ml-64`}>
@@ -91,19 +93,7 @@ export default function Dashboard() {
           <h1 className="text-2xl font-bold  mt-16 text-gray-900 dark:text-white px-4">
             Top Posts
           </h1>
-          <div>
-            <div role="tablist" className="tabs tabs-boxed">
-              <a role="tab" className="tab">
-                Tab 1
-              </a>
-              <a role="tab" className="tab tab-active">
-                Tab 2
-              </a>
-              <a role="tab" className="tab">
-                Tab 3
-              </a>
-            </div>
-          </div>
+         <TopContents />
         </div>
       </div>
     </section>

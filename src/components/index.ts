@@ -21,3 +21,4 @@ export * from "./main/TopQuestions";
 // dashboard
 export * from "./dashboard/Sidebar";
 export * from "./dashboard/Badges";
+export * from "./dashboard/TopContents";
