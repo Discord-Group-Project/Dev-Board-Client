@@ -4,7 +4,9 @@ import { RiAccountPinCircleLine } from "react-icons/ri";
 import { TbActivityHeartbeat } from "react-icons/tb";
 import { IoSettings } from "react-icons/io5";
 import React from "react";
-
+import { FaRegQuestionCircle } from "react-icons/fa"
+import { SiAnswer } from "react-icons/si"
+import { LiaBlogSolid } from "react-icons/lia"
 export default function Sidebar() {
   return (
     <div>
@@ -62,9 +64,36 @@ export default function Sidebar() {
               </Link>
             </li>
 
-    
+            <li>
+              <a
+                href="/dashboard/blogs"
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              >
+                <LiaBlogSolid />
 
+                <span className="flex-1 ms-3 whitespace-nowrap">Blogs</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="/dashboard/questions"
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              >
+                <FaRegQuestionCircle />
 
+                <span className="flex-1 ms-3 whitespace-nowrap">Questions</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="/dashboard/answers"
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              >
+                <SiAnswer />
+
+                <span className="flex-1 ms-3 whitespace-nowrap">Anawers</span>
+              </a>
+            </li>
             <li>
               <a
                 href="#"
